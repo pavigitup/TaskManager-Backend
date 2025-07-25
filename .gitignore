@@ -9,6 +9,8 @@ build/
 # Environment variables
 .env
 
+.vscode
+
 # Logs
 logs
 *.log
