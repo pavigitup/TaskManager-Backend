@@ -6,7 +6,10 @@ info:
 
 servers:
   - url: http://localhost:8001/api
-
+    description: Development server
+  - url: http://localhost:8001/swagger.json
+    description: Swagger JSON
+    
 components:
   securitySchemes:
     bearerAuth:

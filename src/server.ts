@@ -51,7 +51,30 @@ const swaggerDocument = YAML.load(path.join(__dirname, '../docs/swagger.yaml'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
+// Enhance Swagger document with additional metadata
+const enhancedSwaggerDocument = {
+  openapi: "3.0.1",
+  info: {
+    title: "Task Management API",
+    description: "API for managing users, tasks, and comments",
+    contact: {
+      name: "Your Company Name",
+      email: "support@yourcompany.com"
+    },
+    version: "1.0.0"
+  },
+  servers: [
+    {
+      url: "http://localhost:8001/api"
+    }
+  ],
+  ...swaggerDocument
+};
 
+app.get('/swagger.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerDocument);
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
