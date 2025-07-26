@@ -54,6 +54,8 @@ components:
         - assignee
         - dueDate
       properties:
+        id:
+          type: string
         title:
           type: string
         description:
